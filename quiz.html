@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head><title>Python Quiz</title></head>
+<body>
+    <h1>Question {{ q_num }} of 25</h1>
+    <p><strong>Topic: {{ q.topic|upper }}</strong></p>
+    <h3>{{ q.question }}</h3>
+
+    <form method="POST">
+        {% if q.type == 'multiple_choice' %}
+            {% for option in q.options %}
+                <input type="radio" name="answer" value="{{ option[0] }}" required> {{ option }}<br>
+            {% endfor %}
+        {% else %}
+            <input type="text" name="answer" placeholder="Type answer here" required>
+        {% endif %}
+        <br>
+        <button type="submit">Next Question</button>
+    </form>
+</body>
+</html>
